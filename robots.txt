@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap:https://amberfashion.github.io/Amber/
