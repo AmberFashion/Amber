@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon T-Shirt - AMBER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">AMBER</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#products">T-Shirts</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="product-detail">
+    <div class="product-detail-inner">
+      <img src="Images/Gojo white.jpg" alt="Dragon T-Shirt">
+      <h2>Gojo white</h2>
+      <p class="price">₹499</p>
+
+      <label for="size">Select Size:</label>
+      <select id="size">
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+      </select>
+
+      <h3>Offer:</h3>
+      <p>Buy 2 Dragon T-Shirts and get 10% off!</p>
+
+      <h3>Terms & Conditions:</h3>
+      <ul>
+        <li>Return within 7 days only.</li>
+        <li>Cash on Delivery available.</li>
+        <li>Sizes are based on standard measurements.</li>
+      </ul>
+
+      <button id="add-to-cart-detail" class="btn">Add to Cart</button>
+    </div>
+  </main>
+
+  <script>
+    const cartBtn = document.getElementById('add-to-cart-detail');
+    cartBtn.addEventListener('click', () => {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({
+        name: 'gogo white',
+        price: 499,
+        size: document.getElementById('size').value
+      });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Dragon T-Shirt added to cart!');
+    });
+  </script>
+</body>
+</html>

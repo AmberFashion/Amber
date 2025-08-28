@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Shirts - AMBER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">AMBER</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tshirts.html">T-Shirts</a></li>
+                <li><a href="pants.html">Pants</a></li>
+                <li><a href="hoodies.html">Hoodies</a></li>
+            </ul> <button id="cart-btn" class="pill">🛒 Cart (<span id="cart-count">0</span>)</button>
+        </nav>
+    </header>
+    <section class="products">
+        <h2>T-Shirts Collection</h2>
+        <div class="product-grid">
+            <div class="product-card" data-name="Furious Dragon T-Shirt" data-price="499"> <img
+                    src="Images/Furious Dragon.jpg" alt="T-Shirt">
+                <h3>Furious Dragon T-Shirt</h3>
+                <p class="price">₹499</p> <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card" data-name="Gojo Black T-Shirt" data-price="599"> <img src="Images/Gojo black.jpg"
+                    alt="T-Shirt">
+                <h3>Gojo Black T-Shirt</h3>
+                <p class="price">₹599</p> <button class="add-to-cart">Add to Cart</button>
+            </div> <!-- Add more T-Shirts here -->
+        </div>
+    </section>
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-head">
+                <h3>Your Cart</h3> <button id="close-cart" class="icon-btn" aria-label="Close">✖</button>
+            </div>
+            <ul id="cart-items" class="cart-list"></ul>
+            <div class="cart-summary">
+                <p>Total: ₹<span id="cart-total">0</span></p>
+                <div class="row"> <button id="clear-cart" class="ghost">Clear</button> <button id="checkout-btn"
+                        class="btn">Checkout</button> </div>
+            </div>
+        </div>
+    </div> <!-- Checkout modal (optional if you want checkout on this page too) -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-head">
+                <h3>Checkout</h3> <button id="close-checkout" class="icon-btn" aria-label="Close">✖</button>
+            </div>
+            <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST"> <input
+                    type="hidden" name="_subject" value="🛒 New Order - ApparelX"> <input type="hidden" name="_captcha"
+                    value="false"> <input type="hidden" name="_template" value="table"> <input type="hidden"
+                    name="_next" value="thankyou.html">
+                <div class="grid"> <input type="text" name="Full Name" placeholder="Full Name" required> <input
+                        type="email" name="Customer Email" placeholder="Email Address" required> </div> <input
+                    type="text" name="Billing Address" placeholder="Billing Address" required> <select
+                    name="Payment Method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="Credit/Debit Card">Credit/Debit Card</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                </select> <textarea id="order-preview" name="Order Items" readonly rows="4"
+                    placeholder="Order items will appear here…"></textarea> <input type="hidden" id="order-input"
+                    name="Order (raw)"> <input type="hidden" id="total-input" name="Order Total (₹)"> <button
+                    type="submit" class="btn full">Place Order</button>
+            </form>
+        </div>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
