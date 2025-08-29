@@ -4,7 +4,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AMBER – Trendy Apparel</title>
+  <title>AMBER – Trendy Apparel | Buy Stylish T-Shirts Online</title>
+
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description"
+    content="Shop AMBER's trendy apparel collection. Premium quality T-Shirts, stylish fashion, and comfy clothing at affordable prices. Perfect for everyone." />
+  <meta name="keywords"
+    content="amber fashion, trendy t-shirts, online clothing store, stylish apparel, buy tshirts online india" />
+  <meta name="author" content="AMBER Apparel" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ✅ Open Graph (Social Media Preview) -->
+  <meta property="og:title" content="AMBER – Trendy Apparel" />
+  <meta property="og:description"
+    content="Discover stylish & affordable apparel. Shop premium T-Shirts online from AMBER." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourusername.github.io/" />
+  <meta property="og:image" content="https://yourusername.github.io/Images/Furious%20Dragon.jpg" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AMBER – Trendy Apparel" />
+  <meta name="twitter:description" content="Shop premium T-Shirts & trendy apparel online at AMBER." />
+  <meta name="twitter:image" content="https://yourusername.github.io/Images/Furious%20Dragon.jpg" />
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="Images/favicon.png" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -35,11 +62,11 @@
   <!-- Slider -->
   <div class="slider">
     <div class="slides">
-      <div class="slide"><img src="Images/Elegant design.jpg" alt="Slide 1"></div>
-      <div class="slide"><img src="Images/Furious Dragon.jpg" alt="Slide 2"></div>
-      <div class="slide"><img src="Images/Gojo black.jpg" alt="Slide 3"></div>
-      <div class="slide"><img src="Images/Gojo white.jpg" alt="Slide 4"></div>
-      <div class="slide"><img src="img1.jpg" alt="Slide 5"></div>
+      <div class="slide"><img src="Images/Elegant design.jpg" alt="Elegant design T-shirt"></div>
+      <div class="slide"><img src="Images/Furious Dragon.jpg" alt="Furious Dragon T-shirt"></div>
+      <div class="slide"><img src="Images/Gojo black.jpg" alt="Gojo Black Anime T-shirt"></div>
+      <div class="slide"><img src="Images/Gojo white.jpg" alt="Gojo White Anime T-shirt"></div>
+      <div class="slide"><img src="img1.jpg" alt="Trendy Stylish T-shirt"></div>
     </div>
     <div class="dots"></div>
   </div>
@@ -54,23 +81,31 @@
       <div class="product-grid">
         <div class="product-card" data-name="Dragon T-Shirt" data-price="499">
           <a href="dragon-tshirt.html">
-            <img src="Images/Furious Dragon.jpg" alt="Dragon T-Shirt">
+            <img src="Images/Furious Dragon.jpg" alt="Dragon Graphic T-Shirt">
             <h3>Dragon T-Shirt</h3>
           </a>
-
           <p class="price">₹499</p>
           <button class="add-to-cart">Add to Cart</button>
         </div>
 
-        <div class="product-card" data-name="Gojo black" data-price="399">
+        <div class="product-card" data-name="Gojo White" data-price="399">
           <a href="gojo-white-tshirt.html">
-            <img src="Images/Gojo white.jpg" alt="Dragon T-Shirt">
-            <h3>Gojo white</h3>
+            <img src="Images/Gojo white.jpg" alt="Gojo White Anime T-Shirt">
+            <h3>Gojo White</h3>
           </a>
-
           <p class="price">₹399</p>
           <button class="add-to-cart">Add to Cart</button>
         </div>
+
+        <div class="product-card" data-name="Elegant design" data-price="349">
+          <a href="Elegant-design.html">
+            <img src="Images/Elegant design.jpg" alt="Dragon Graphic T-Shirt">
+            <h3>Elegant design</h3>
+          </a>
+          <p class="price">₹349</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+
 
       </div>
     </div>
@@ -79,7 +114,8 @@
   <!-- About -->
   <section id="about" class="about">
     <h2>About</h2>
-    <p>We curate comfy, stylish apparel—made to move with you.</p>
+    <p>At AMBER, we curate comfy, stylish apparel made to move with you. Our T-Shirts combine premium fabric with trendy
+      designs for everyday wear.</p>
   </section>
 
   <!-- Contact -->
@@ -87,7 +123,7 @@
     <h2>Contact</h2>
     <p>Have questions? We’d love to help.</p>
     <form class="contact-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="📩 New Contact Message - ApparelX">
+      <input type="hidden" name="_subject" value="📩 New Contact Message - AMBER Apparel">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="Name" placeholder="Your Name" required>
       <input type="email" name="Email" placeholder="Your Email" required>
@@ -98,59 +134,55 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 ApparelX. All Rights Reserved.</p>
+    <p>© 2025 AMBER Apparel. All Rights Reserved.</p>
   </footer>
 
-  <!-- Cart Modal -->
-  <div id="cart-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-head">
-        <h3>Your Cart</h3>
-        <button id="close-cart" class="icon-btn" aria-label="Close">✖</button>
-      </div>
-      <ul id="cart-items" class="cart-list"></ul>
-      <div class="cart-summary">
-        <p>Total: ₹<span id="cart-total">0</span></p>
-        <div class="row">
-          <button id="clear-cart" class="ghost">Clear</button>
-          <button id="checkout-btn" class="btn">Checkout</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ✅ Structured Data for Products (JSON-LD for SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "AMBER Apparel",
+    "url": "https://yourusername.github.io/",
+    "logo": "https://yourusername.github.io/Images/favicon.png",
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/"
+    ],
+    "offers": {
+      "@type": "OfferCatalog",
+      "name": "T-Shirts",
+      "itemListElement": [
+        {
+          "@type": "Product",
+          "name": "Dragon T-Shirt",
+          "image": "https://yourusername.github.io/Images/Furious%20Dragon.jpg",
+          "description": "Premium Dragon graphic T-shirt, stylish and comfy.",
+          "offers": {
+            "@type": "Offer",
+            "price": "499",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Gojo White T-Shirt",
+          "image": "https://yourusername.github.io/Images/Gojo%20white.jpg",
+          "description": "Anime-inspired Gojo White T-shirt, premium cotton fabric.",
+          "offers": {
+            "@type": "Offer",
+            "price": "399",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+  }
+  </script>
 
-  <!-- Checkout Modal -->
-  <div id="checkout-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-head">
-        <h3>Checkout</h3>
-        <button id="close-checkout" class="icon-btn" aria-label="Close">✖</button>
-      </div>
-      <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="🛒 New Order - ApparelX">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="thankyou.html">
-        <div class="grid">
-          <input type="text" name="Full Name" placeholder="Full Name" required>
-          <input type="email" name="Customer Email" placeholder="Email Address" required>
-        </div>
-        <input type="text" name="Billing Address" placeholder="Billing Address" required>
-        <select name="Payment Method" required>
-          <option value="" disabled selected>Select Payment Method</option>
-          <option value="Credit/Debit Card">Credit/Debit Card</option>
-          <option value="UPI">UPI</option>
-          <option value="Cash on Delivery">Cash on Delivery</option>
-        </select>
-        <textarea id="order-preview" name="Order Items" readonly rows="4"
-          placeholder="Order items will appear here…"></textarea>
-        <input type="hidden" id="order-input" name="Order (raw)">
-        <input type="hidden" id="total-input" name="Order Total (₹)">
-        <button type="submit" class="btn full">Place Order</button>
-      </form>
-    </div>
-  </div>
-
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 
