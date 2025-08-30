@@ -7,122 +7,121 @@
   <title>Dragon T-Shirt - AMBER</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* --- Product Detail Layout --- */
-.product-detail {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
+    .product-detail {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
 
-/* Left side: big product image */
-.product-detail img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
+    .product-detail img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-.product-detail img:hover {
-  transform: scale(1.03);
-}
+    .product-detail img:hover {
+      transform: scale(1.03);
+    }
 
-/* Right side: product info + actions */
-.product-page {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    .product-page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-.product-page h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
+    .product-page h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
 
-.price {
-  font-size: 1.6rem;
-  color: #e63946;
-  font-weight: bold;
-}
+    .price {
+      font-size: 1.6rem;
+      color: #e63946;
+      font-weight: bold;
+    }
 
-label {
-  font-weight: 500;
-  margin-top: 10px;
-}
+    label {
+      font-weight: 500;
+      margin-top: 10px;
+    }
 
-#color {
-  padding: 8px 12px;
-  margin-top: 5px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
+    select {
+      padding: 8px 12px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 
-/* Buttons */
-#add-to-cart, .buy-now {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    #add-to-cart,
+    .buy-now {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-#add-to-cart {
-  background: #ff9800;
-  color: white;
-  margin-right: 15px;
-}
+    #add-to-cart {
+      background: #ff9800;
+      color: white;
+      margin-right: 15px;
+    }
 
-#add-to-cart:hover {
-  background: #e68900;
-}
+    #add-to-cart:hover {
+      background: #e68900;
+    }
 
-.buy-now {
-  background: #4caf50;
-  color: white;
-}
+    .buy-now {
+      background: #4caf50;
+      color: white;
+    }
 
-.buy-now:hover {
-  background: #3d8b40;
-}
+    .buy-now:hover {
+      background: #3d8b40;
+    }
 
-/* Align buttons side by side */
-.actions {
-  display: flex;
-  gap: 15px;
-  margin-top: 15px;
-}
+    .actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .product-detail {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #444;
+    }
 
-  .actions {
-    flex-direction: column;
-    width: 100%;
-  }
+    @media (max-width: 768px) {
+      .product-detail {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-  #add-to-cart, .buy-now {
-    width: 100%;
-  }
-}
+      .actions {
+        flex-direction: column;
+        width: 100%;
+      }
 
+      #add-to-cart,
+      .buy-now {
+        width: 100%;
+      }
+    }
   </style>
-
 </head>
-
 
 <body>
   <header>
@@ -138,68 +137,111 @@ label {
   </header>
 
   <main class="product-detail">
-    <div class="product-page">
-      <h2>Elegant design</h2>
-      <img id="product-img" src="Images/Elegant design.jpg" alt="Gojo T-shirt" width="300">
+    <!-- Left: product image -->
+    <img id="product-img" src="Images/Elegant design.jpg" alt="Dragon T-shirt">
 
+    <!-- Right: product info -->
+    <div class="product-page">
+      <h2 id="product-title">Elegant Design</h2>
       <p id="product-price" class="price">₹349</p>
 
-      <!-- ✅ Color options -->
-      <label for="color">Choose Color:</label>
-      <select id="color">
-        <option value="black" data-img="Images/Elegant design.jpg" data-price="349">black</option>
-        <option value="skin" data-img="Images/Elegant design skin.jpg" data-price="499">skin</option>
-
+      <!-- ✅ Size selector -->
+      <label for="size">Choose Size:</label>
+      <select id="size">
+        <option value="Small" data-price="349">Small - ₹349</option>
+        <option value="Medium" data-price="399">Medium - ₹399</option>
+        <option value="Large" data-price="449">Large - ₹449</option>
       </select>
 
-      <button id="add-to-cart">Add to Cart</button>
-    </div>
+      <!-- ✅ Color selector -->
+      <label for="color">Choose Color:</label>
+      <select id="color">
+        <option value="white"
+          data-img="Images/Elegant design.jpg"
+          data-price="349"
+          data-title="Elegant Design - Black"
+          data-desc="Classic white cotton T-shirt with elegant dragon design.">
+          White
+        </option>
+        <option value="skin"
+          data-img="Images/Elegant design skin.jpg"
+          data-price="499"
+          data-title="Elegant Design - Skin"
+          data-desc="Trendy skin-colored premium cotton T-shirt with bold dragon print.">
+          Skin
+        </option>
+      </select>
 
+      <!-- ✅ Description -->
+      <div class="description" id="product-desc">
+        Classic white cotton T-shirt with elegant dragon design.
+      </div>
+
+      <div class="actions">
+        <button id="add-to-cart">Add to Cart</button>
+        <button class="buy-now">Buy Now</button>
+      </div>
+    </div>
   </main>
 
   <script>
-    // Load cart from localStorage
+    // Load cart
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // DOM elements
+    const sizeSelect = document.getElementById("size");
     const colorSelect = document.getElementById("color");
-    const productImg = document.getElementById("product-img");
     const productPrice = document.getElementById("product-price");
+    const productTitle = document.getElementById("product-title");
+    const productDesc = document.getElementById("product-desc");
+    const productImg = document.getElementById("product-img");
     const addToCartBtn = document.getElementById("add-to-cart");
 
-    // ✅ Update image and price when color changes
-    colorSelect.addEventListener("change", function () {
-      const selectedOption = colorSelect.options[colorSelect.selectedIndex];
-      productImg.src = selectedOption.getAttribute("data-img");
-      productPrice.textContent = "₹" + selectedOption.getAttribute("data-price");
+    // ✅ Update price when size changes
+    sizeSelect.addEventListener("change", function () {
+      const selectedSize = sizeSelect.options[sizeSelect.selectedIndex];
+      const basePrice = parseInt(selectedSize.getAttribute("data-price"));
+      productPrice.textContent = "₹" + basePrice;
     });
 
-    // ✅ Add to cart with correct variant
+    // ✅ Update details when color changes
+    colorSelect.addEventListener("change", function () {
+      const selected = colorSelect.options[colorSelect.selectedIndex];
+      productImg.src = selected.getAttribute("data-img");
+      productPrice.textContent = "₹" + selected.getAttribute("data-price");
+      productTitle.textContent = selected.getAttribute("data-title");
+      productDesc.textContent = selected.getAttribute("data-desc");
+    });
+
+    // ✅ Add to cart with selected size & color
     addToCartBtn.addEventListener("click", function () {
-      const selectedOption = colorSelect.options[colorSelect.selectedIndex];
+      const sizeSelected = sizeSelect.options[sizeSelect.selectedIndex];
+      const colorSelected = colorSelect.options[colorSelect.selectedIndex];
+
       const product = {
-        name: "Gojo T-Shirt - " + selectedOption.value,
-        price: parseInt(selectedOption.getAttribute("data-price")),
-        image: selectedOption.getAttribute("data-img"),
-        quantity: 1,
+        name: colorSelected.getAttribute("data-title"),
+        price: parseInt(productPrice.textContent.replace("₹", "")),
+        image: productImg.src,
+        size: sizeSelected.value,
+        color: colorSelected.value,
+        quantity: 1
       };
 
-      // check if already in cart
       const existing = cart.find(
-        (item) => item.name === product.name
+        (item) =>
+          item.name === product.name &&
+          item.size === product.size &&
+          item.color === product.color
       );
+
       if (existing) {
         existing.quantity += 1;
       } else {
         cart.push(product);
       }
 
-      // save back to localStorage
       localStorage.setItem("cart", JSON.stringify(cart));
-
-      alert(product.name + " added to cart!");
+      alert(`${product.name} (${product.size}, ${product.color}) added to cart!`);
     });
-
   </script>
 </body>
 

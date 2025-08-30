@@ -1,26 +1,30 @@
 // ------- State -------
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // ------- Elements -------
-const cartCountEl   = document.getElementById("cart-count");
-const cartBtn       = document.getElementById("cart-btn");
-const cartModal     = document.getElementById("cart-modal");
-const closeCartBtn  = document.getElementById("close-cart");
-const cartItemsEl   = document.getElementById("cart-items");
-const cartTotalEl   = document.getElementById("cart-total");
-const clearCartBtn  = document.getElementById("clear-cart");
-const checkoutBtn   = document.getElementById("checkout-btn");
+const cartCountEl = document.getElementById("cart-count");
+const cartBtn = document.getElementById("cart-btn");
+const cartModal = document.getElementById("cart-modal");
+const closeCartBtn = document.getElementById("close-cart");
+const cartItemsEl = document.getElementById("cart-items");
+const cartTotalEl = document.getElementById("cart-total");
+const clearCartBtn = document.getElementById("clear-cart");
+const checkoutBtn = document.getElementById("checkout-btn");
 
 const checkoutModal = document.getElementById("checkout-modal");
 const closeCheckout = document.getElementById("close-checkout");
-const checkoutForm  = document.getElementById("checkout-form");
-const orderPreview  = document.getElementById("order-preview");
-const orderInput    = document.getElementById("order-input");
-const totalInput    = document.getElementById("total-input");
+const checkoutForm = document.getElementById("checkout-form");
+const orderPreview = document.getElementById("order-preview");
+const orderInput = document.getElementById("order-input");
+const totalInput = document.getElementById("total-input");
 
 // ------- Helpers -------
 function formatINR(n) {
   return Number(n).toLocaleString("en-IN");
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function renderCart() {
@@ -28,91 +32,91 @@ function renderCart() {
   let total = 0;
 
   cart.forEach((item, idx) => {
-    total += item.price;
+    total += item.price * item.quantity;
 
     const li = document.createElement("li");
+    li.className = "cart-item";
 
-    const left = document.createElement("span");
-    left.className = "title";
-    left.textContent = `${item.name}`;
+    li.innerHTML = `
+      <img src="${item.image || "Images/favicon.png"}" alt="${item.name}" class="cart-thumb">
+      <div class="info">
+        <h4>${item.name}</h4>
+        <p>₹${formatINR(item.price)} × ${item.quantity}</p>
+      </div>
+      <button class="remove" data-index="${idx}">✖</button>
+    `;
 
-    const mid = document.createElement("span");
-    mid.textContent = `₹${formatINR(item.price)}`;
-
-    const rm = document.createElement("button");
-    rm.className = "remove";
-    rm.textContent = "Remove";
-    rm.addEventListener("click", () => {
-      cart.splice(idx, 1);
-      updateCart();
-    });
-
-    li.appendChild(left);
-    li.appendChild(mid);
-    li.appendChild(rm);
     cartItemsEl.appendChild(li);
   });
 
   cartTotalEl.textContent = formatINR(total);
-  cartCountEl.textContent = cart.length;
+  cartCountEl.textContent = cart.reduce((sum, i) => sum + i.quantity, 0);
+
+  saveCart();
 }
 
 function updateCart() {
   renderCart();
 }
 
-// ------- Add to Cart -------
+// ------- Add to cart -------
 document.querySelectorAll(".add-to-cart").forEach(btn => {
   btn.addEventListener("click", (e) => {
     const card = e.target.closest(".product-card");
     const name = card.dataset.name;
     const price = parseFloat(card.dataset.price);
-    cart.push({ name, price });
+    const image = card.querySelector("img").src;
+
+    const existing = cart.find(i => i.name === name);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ name, price, quantity: 1, image });
+    }
     updateCart();
   });
 });
 
-// ------- Cart Modal Controls -------
-cartBtn.addEventListener("click", () => { cartModal.style.display = "flex"; });
-closeCartBtn.addEventListener("click", () => { cartModal.style.display = "none"; });
-
-clearCartBtn.addEventListener("click", () => {
-  cart = [];
-  updateCart();
+// ------- Remove item -------
+cartItemsEl.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove")) {
+    const idx = e.target.dataset.index;
+    cart.splice(idx, 1);
+    updateCart();
+  }
 });
 
-// Close modals when backdrop clicked
-[cartModal, checkoutModal].forEach(modal => {
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.style.display = "none";
-  });
-});
+// ------- Cart modal -------
+cartBtn.addEventListener("click", () => cartModal.style.display = "flex");
+closeCartBtn.addEventListener("click", () => cartModal.style.display = "none");
+clearCartBtn.addEventListener("click", () => { cart = []; updateCart(); });
 
-// ------- Checkout -------
+// ------- Checkout modal -------
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) return;
-
-  const lines = cart.map((i, idx) => `${idx + 1}. ${i.name} — ₹${formatINR(i.price)}`);
-  const total = cart.reduce((s, i) => s + i.price, 0);
+  const lines = cart.map((i, idx) =>
+    `${idx + 1}. ${i.name} — ₹${formatINR(i.price)} × ${i.quantity}`
+  );
+  const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
 
   orderPreview.value = lines.join("\n");
-  orderInput.value   = cart.map(i => `${i.name}:${i.price}`).join("|");
-  totalInput.value   = total;
+  orderInput.value = cart.map(i => `${i.name}:${i.price}×${i.quantity}`).join("|");
+  totalInput.value = total;
 
   cartModal.style.display = "none";
   checkoutModal.style.display = "flex";
 });
 
-closeCheckout.addEventListener("click", () => { checkoutModal.style.display = "none"; });
-
+// ------- On Form Submit -------
 checkoutForm.addEventListener("submit", () => {
   cart = [];
   updateCart();
+  checkoutModal.style.display = "none";
+  alert("✅ Order placed successfully!");
 });
 
-// Initial render
+// ------- Initial render -------
 updateCart();
-
 // ------- SLIDER -------
 const slides = document.querySelector('.slides');
 const slideItems = document.querySelectorAll('.slide');
@@ -138,28 +142,23 @@ function updateDots() {
   });
 }
 
-// Show slide + sync dots
 function showSlide(index) {
-  currentIndex = (index + realSlides) % realSlides; // <-- FIXED
+  currentIndex = (index + realSlides) % realSlides;
   slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   updateDots();
 }
 
-// Dot click navigation
 function goToSlide(index) {
   showSlide(index);
   resetInterval();
 }
 
-// Autoplay loop
 function nextSlide() {
   showSlide(currentIndex + 1);
 }
 
-// Autoplay every 3s
 let slideInterval = setInterval(nextSlide, 3000);
 
-// Reset autoplay
 function resetInterval() {
   clearInterval(slideInterval);
   slideInterval = setInterval(nextSlide, 3000);

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMBER – Trendy Apparel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">AMBER</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#products">T-Shirts</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="cart-btn" class="pill">🛒 Cart (<span id="cart-count">0</span>)</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h2>Trendy Apparel for Everyone</h2>
+      <p>Discover the latest fashion at unbeatable prices.</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+      <div class="slide"><img src="Images/Elegant design.jpg" alt="Slide 1"></div>
+      <div class="slide"><img src="Images/Furious Dragon.jpg" alt="Slide 2"></div>
+      <div class="slide"><img src="Images/Gojo black.jpg" alt="Slide 3"></div>
+      <div class="slide"><img src="Images/Gojo white.jpg" alt="Slide 4"></div>
+      <div class="slide"><img src="img1.jpg" alt="Slide 5"></div>
+    </div>
+    <div class="dots"></div>
+  </div>
+
+  <!-- Products -->
+  <section id="products" class="products">
+    <h2>Our Collection</h2>
+
+    <!-- T-Shirts Section -->
+    <div class="category">
+      <h3>T-Shirts</h3>
+      <div class="product-grid">
+        <div class="product-card" data-name="Dragon T-Shirt" data-price="499">
+          <a href="dragon-tshirt.html">
+            <img src="Images/Furious Dragon.jpg" alt="Dragon T-Shirt">
+            <h3>Dragon T-Shirt</h3>
+          </a>
+
+          <p class="price">₹499</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-name="Gojo black" data-price="399">
+          <a href="gojo-white-tshirt.html">
+            <img src="Images/Gojo white.jpg" alt="Dragon T-Shirt">
+            <h3>Gojo white</h3>
+          </a>
+
+          <p class="price">₹399</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>We curate comfy, stylish apparel—made to move with you.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Have questions? We’d love to help.</p>
+    <form class="contact-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="📩 New Contact Message - ApparelX">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="Name" placeholder="Your Name" required>
+      <input type="email" name="Email" placeholder="Your Email" required>
+      <textarea name="Message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 ApparelX. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-head">
+        <h3>Your Cart</h3>
+        <button id="close-cart" class="icon-btn" aria-label="Close">✖</button>
+      </div>
+      <ul id="cart-items" class="cart-list"></ul>
+      <div class="cart-summary">
+        <p>Total: ₹<span id="cart-total">0</span></p>
+        <div class="row">
+          <button id="clear-cart" class="ghost">Clear</button>
+          <button id="checkout-btn" class="btn">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-head">
+        <h3>Checkout</h3>
+        <button id="close-checkout" class="icon-btn" aria-label="Close">✖</button>
+      </div>
+      <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="🛒 New Order - ApparelX">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="thankyou.html">
+        <div class="grid">
+          <input type="text" name="Full Name" placeholder="Full Name" required>
+          <input type="email" name="Customer Email" placeholder="Email Address" required>
+        </div>
+        <input type="text" name="Billing Address" placeholder="Billing Address" required>
+        <select name="Payment Method" required>
+          <option value="" disabled selected>Select Payment Method</option>
+          <option value="Credit/Debit Card">Credit/Debit Card</option>
+          <option value="UPI">UPI</option>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+        <textarea id="order-preview" name="Order Items" readonly rows="4"
+          placeholder="Order items will appear here…"></textarea>
+        <input type="hidden" id="order-input" name="Order (raw)">
+        <input type="hidden" id="total-input" name="Order Total (₹)">
+        <button type="submit" class="btn full">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

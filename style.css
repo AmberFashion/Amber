@@ -351,3 +351,16 @@ footer {
     background: #ff4e50;
     /* highlight color */
 }
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cart-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
