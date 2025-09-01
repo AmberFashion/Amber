@@ -199,36 +199,44 @@
   <div class="modal-content">
     <span id="close-checkout" class="close">&times;</span>
     <h2>Checkout</h2>
-    <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="🛒 New Order - AMBER">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="thankyou.html">
+   <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
+        <!-- FormSubmit settings -->
+        <input type="hidden" name="_subject" value="🛒 New Order - AMBER">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://amberfashion.github.io/Amber/thankyou.html">
 
-      <label>Full Name:</label>
-      <input type="text" name="Full Name" required>
-      <label>Email Address:</label>
-      <input type="email" name="Customer Email" required>
-      <label>Birthday:</label>
-      <input type="date" name="Birthday" required>
-      <label>Billing Address:</label>
-      <input type="text" name="Billing Address" required>
+        <!-- Customer Info -->
+        <label>Full Name:</label>
+        <input type="text" name="Full Name" required>
 
-      <label>Order Summary:</label>
-      <textarea id="order-preview" readonly></textarea>
+        <label>Email Address:</label>
+        <input type="email" name="Customer Email" required>
 
-      <input type="hidden" id="order-input" name="Order Details">
-      <input type="hidden" id="total-input" name="Total Amount">
+        <label>Birthday:</label>
+        <input type="date" name="Birthday" required>
 
-      <label for="payment-mode">Payment Mode:</label>
-      <select id="payment-mode" name="Payment Mode" required>
-        <option value="UPI">UPI</option>
-        <option value="Credit/Debit Card">Credit/Debit Card</option>
-        <option value="Cash on Delivery">Cash on Delivery</option>
-      </select>
+        <label>Billing Address:</label>
+        <input type="text" name="Billing Address" required>
 
-      <button type="submit">Confirm Order</button>
-    </form>
+        <!-- Order Preview -->
+        <label>Order Summary:</label>
+        <textarea id="order-preview" readonly></textarea>
+
+        <!-- Hidden inputs -->
+        <input type="hidden" id="order-input" name="Order Details">
+        <input type="hidden" id="total-input" name="Total Amount">
+
+        <!-- Payment -->
+        <label for="payment-mode">Payment Mode:</label>
+        <select id="payment-mode" name="Payment Mode" required>
+          <option value="UPI">UPI</option>
+          <option value="Credit/Debit Card">Credit/Debit Card</option>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+
+        <button type="submit">Confirm Order</button>
+      </form>
   </div>
 </div>
 
