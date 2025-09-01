@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ – Amber Fashion</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafc;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .faq-question {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      margin-top: 10px;
+      display: none;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
+      margin-top: 40px;
+
+    }
+    /* Style for Home link in FAQ page */
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+/* Special styling only for Home link */
+.nav-links li a[href="#hero"] {
+  background: linear-gradient(135deg, #ff6f61, #ffcc70);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-links li a[href="#hero"]:hover {
+  background: linear-gradient(135deg, #ffcc70, #ff6f61);
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">AMBER</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+    <h1>Frequently Asked Questions</h1>
+  </header>
+
+  <div class="faq-container">
+    <div class="faq-item">
+      <p class="faq-question">1. What is Amber Fashion?<span>+</span></p>
+      <p class="faq-answer">Amber Fashion is an online fashion brand specializing in trendy, premium-quality T-shirts designed for comfort, style, and individuality.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">2. How do I place an order?<span>+</span></p>
+      <p class="faq-answer">Simply browse our products, click “Add to Cart,” and proceed to checkout. You can securely complete your purchase in just a few steps.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">3. What payment methods do you accept?<span>+</span></p>
+      <p class="faq-answer">We accept all major payment methods including UPI, debit/credit cards, and net banking. COD (Cash on Delivery) is available in select regions.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">4. How long will my order take to arrive?<span>+</span></p>
+      <p class="faq-answer">Orders are typically delivered within 5–7 business days depending on your location.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">5. Can I return or exchange a product?<span>+</span></p>
+      <p class="faq-answer">Yes, you can request a return or exchange within 7 days of delivery, provided the item is unused and in original condition.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">6. How do I contact customer support?<span>+</span></p>
+      <p class="faq-answer">You can reach us anytime at <b>amber.business2025@gmail.com</b> or via the Contact Us page on our website.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Amber Fashion. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // FAQ Toggle
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+      item.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>

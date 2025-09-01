@@ -112,7 +112,7 @@ checkoutForm.addEventListener("submit", () => {
   cart = [];
   updateCart();
   checkoutModal.style.display = "none";
-  alert("✅ Order placed successfully!");
+  
 });
 
 // ------- Initial render -------
