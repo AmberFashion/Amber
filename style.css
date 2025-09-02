@@ -29,15 +29,12 @@ header {
 }
 
 .navbar {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap; /* Mobile wrap */
+    justify-content: space-between; /* Logo left, hamburger/cart right */
+    position: relative; /* Needed for absolute nav-links */
+    flex-wrap: nowrap;
 }
-
 
 /* Hamburger button */
 .hamburger {
@@ -78,6 +75,7 @@ header {
         margin: 8px 0;
     }
 }
+
 
 .logo {
     margin-right: auto;
