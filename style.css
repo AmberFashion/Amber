@@ -53,11 +53,6 @@ header {
 @media (max-width: 768px) {
     .hamburger {
         display: block;
-       order: 0;
-    }
-    .logo {
-        margin: 0 auto; /* center logo */
-        order: 1;
     }
 
     .nav-links {
