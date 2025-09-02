@@ -142,7 +142,7 @@
 
   <main class="product-detail">
     <!-- Left: product image -->
-    <img id="product-img" src="Images/Gojo white.jpg" alt="Gojo white">
+    <img id="product-img" src="Images/Gojo-white-page.jpg" alt="Gojo white">
 
     <!-- Right: product info -->
     <div class="product-page">
@@ -160,11 +160,11 @@
       <!-- ✅ Color selector -->
       <label for="color">Choose Color:</label>
       <select id="color">
-        <option value="white" data-img="Images/Gojo white.jpg" data-price="349" data-title="Gojo T-Shirt - white"
+        <option value="white" data-img="Images/Gojo-white-page.jpg" data-price="349" data-title="Gojo T-Shirt - white"
           data-desc="Classic white cotton T-shirt with elegant dragon design.">
           White
         </option>
-        <option value="Black" data-img="Images/Gojo black.jpg" data-price="499" data-title="Gojo T-Shirt black"
+        <option value="Black" data-img="Images/Gojo-black-page.jpg" data-price="499" data-title="Gojo T-Shirt black"
           data-desc="Trendy skin-colored premium cotton T-shirt with bold dragon print.">
           Black
         </option>
@@ -183,23 +183,23 @@
   </main>
 
   <!-- Cart Modal -->
-<div id="cart-modal" class="modal">
-  <div class="modal-content">
-    <span id="close-cart" class="close">&times;</span>
-    <h2>Your Cart</h2>
-    <ul id="cart-items"></ul>
-    <p>Total: ₹<span id="cart-total">0</span></p>
-    <button id="clear-cart">Clear Cart</button>
-    <button id="checkout-btn">Checkout</button>
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-cart" class="close">&times;</span>
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: ₹<span id="cart-total">0</span></p>
+      <button id="clear-cart">Clear Cart</button>
+      <button id="checkout-btn">Checkout</button>
+    </div>
   </div>
-</div>
 
-<!-- Checkout Modal -->
-<div id="checkout-modal" class="modal">
-  <div class="modal-content">
-    <span id="close-checkout" class="close">&times;</span>
-    <h2>Checkout</h2>
-   <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-checkout" class="close">&times;</span>
+      <h2>Checkout</h2>
+      <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
         <!-- FormSubmit settings -->
         <input type="hidden" name="_subject" value="🛒 New Order - AMBER">
         <input type="hidden" name="_captcha" value="false">
@@ -236,62 +236,61 @@
         </select>
 
         <button type="submit">Confirm Order</button>
-      </form>
-  </div>
-</div>
+        </form- </div>
+    </div>
 
 
- <script>
-  const sizeSelect = document.getElementById("size");
-  const colorSelect = document.getElementById("color");
-  const productPrice = document.getElementById("product-price");
-  const productTitle = document.getElementById("product-title");
-  const productDesc = document.getElementById("product-desc");
-  const productImg = document.getElementById("product-img");
-  const addToCartBtn = document.getElementById("add-to-cart");
+    <script>
+      const sizeSelect = document.getElementById("size");
+      const colorSelect = document.getElementById("color");
+      const productPrice = document.getElementById("product-price");
+      const productTitle = document.getElementById("product-title");
+      const productDesc = document.getElementById("product-desc");
+      const productImg = document.getElementById("product-img");
+      const addToCartBtn = document.getElementById("add-to-cart");
 
-  // ✅ Update price when size changes
-  sizeSelect.addEventListener("change", function () {
-    const selectedSize = sizeSelect.options[sizeSelect.selectedIndex];
-    const basePrice = parseInt(selectedSize.getAttribute("data-price"));
-    productPrice.textContent = "₹" + basePrice;
-  });
+      // ✅ Update price when size changes
+      sizeSelect.addEventListener("change", function () {
+        const selectedSize = sizeSelect.options[sizeSelect.selectedIndex];
+        const basePrice = parseInt(selectedSize.getAttribute("data-price"));
+        productPrice.textContent = "₹" + basePrice;
+      });
 
-  // ✅ Update details when color changes
-  colorSelect.addEventListener("change", function () {
-    const selected = colorSelect.options[colorSelect.selectedIndex];
-    productImg.src = selected.getAttribute("data-img");
-    productPrice.textContent = "₹" + selected.getAttribute("data-price");
-    productTitle.textContent = selected.getAttribute("data-title");
-    productDesc.textContent = selected.getAttribute("data-desc");
-  });
+      // ✅ Update details when color changes
+      colorSelect.addEventListener("change", function () {
+        const selected = colorSelect.options[colorSelect.selectedIndex];
+        productImg.src = selected.getAttribute("data-img");
+        productPrice.textContent = "₹" + selected.getAttribute("data-price");
+        productTitle.textContent = selected.getAttribute("data-title");
+        productDesc.textContent = selected.getAttribute("data-desc");
+      });
 
-  // ✅ Add to cart with shared script.js cart
-  addToCartBtn.addEventListener("click", function () {
-    const sizeSelected = sizeSelect.options[sizeSelect.selectedIndex];
-    const colorSelected = colorSelect.options[colorSelect.selectedIndex];
+      // ✅ Add to cart with shared script.js cart
+      addToCartBtn.addEventListener("click", function () {
+        const sizeSelected = sizeSelect.options[sizeSelect.selectedIndex];
+        const colorSelected = colorSelect.options[colorSelect.selectedIndex];
 
-    const product = {
-      name: `${productTitle.textContent} (${sizeSelected.value}, ${colorSelected.value})`,
-      price: parseInt(productPrice.textContent.replace("₹", "")),
-      image: productImg.src,
-      quantity: 1
-    };
+        const product = {
+          name: `${productTitle.textContent} (${sizeSelected.value}, ${colorSelected.value})`,
+          price: parseInt(productPrice.textContent.replace("₹", "")),
+          image: productImg.src,
+          quantity: 1
+        };
 
-    const existing = cart.find((item) => item.name === product.name);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push(product);
-    }
+        const existing = cart.find((item) => item.name === product.name);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push(product);
+        }
 
-    updateCart(); // 🔑 refreshes cart count + modal + saves to localStorage
-  });
-</script>
+        updateCart(); // 🔑 refreshes cart count + modal + saves to localStorage
+      });
+    </script>
 
 
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
