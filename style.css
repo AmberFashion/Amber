@@ -35,11 +35,17 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap; /* Mobile wrap */
 }
 
 .logo {
     margin-right: auto;
     color: var(--brand);
+}
+
+.logo img {
+    height: 75px;
+    width: auto;
 }
 
 .nav-links {
@@ -48,6 +54,7 @@ header {
     gap: 16px;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap; /* Mobile wrap */
 }
 
 .nav-links a {
@@ -63,6 +70,7 @@ header {
     border-radius: 999px;
     cursor: pointer;
 }
+
 
 /* Hero */
 .hero {
@@ -268,8 +276,6 @@ footer {
 .slider {
     width: 100%;
     max-width: 1000px;
-    aspect-ratio: 2.33 / 1;
-    /* Flipkart-like ratio */
     margin: 30px auto;
     overflow: hidden;
     border-radius: 10px;
@@ -279,54 +285,28 @@ footer {
 
 .slides {
     display: flex;
-    width: 400%;
-    /* 4 images */
+    width: 100%;
     animation: slide 16s infinite;
 }
 
 .slide {
-    width: 100%;
-    flex-shrink: 0;
+    flex: 0 0 100%; /* Each slide takes full width */
 }
 
 .slide img {
-    width: 1000;
-    height: 1000;
-    object-fit: cover;
-    /* fills slider nicely */
+    width: 100%;
+    height: auto;
     display: block;
+    object-fit: cover;
 }
 
 /* Keyframes: 3s pause, 1s slide */
 @keyframes slide {
-
-    0%,
-    18% {
-        transform: translateX(0%);
-    }
-
-    /* img1 */
-    25%,
-    43% {
-        transform: translateX(-100%);
-    }
-
-    /* img2 */
-    50%,
-    68% {
-        transform: translateX(-200%);
-    }
-
-    /* img3 */
-    75%,
-    93% {
-        transform: translateX(-300%);
-    }
-
-    /* img4 */
-    100% {
-        transform: translateX(0%);
-    }
+    0%, 20% { transform: translateX(0%); }
+    25%, 45% { transform: translateX(-100%); }
+    50%, 70% { transform: translateX(-200%); }
+    75%, 95% { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
 }
 
 .dots {
@@ -349,7 +329,6 @@ footer {
 
 .dot.active {
     background: #ff4e50;
-    /* highlight color */
 }
 
 .cart-item {
@@ -366,7 +345,79 @@ footer {
     border-radius: 6px;
 }
 
-.logo img {
-  height: 75px; /* Increase size (adjust as needed) */
-  width: auto;  /* Keep aspect ratio */
+/* ------------------- RESPONSIVE ------------------- */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-inner {
+        padding: 40px 12px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .slider {
+        max-width: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Hamburger button */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    font-size: 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none; /* Hide nav-links by default */
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+        background: var(--card);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-top: 1px solid #eee;
+        padding: 10px 0;
+        z-index: 9;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when hamburger clicked */
+    }
 }
