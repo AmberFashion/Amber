@@ -29,12 +29,15 @@ header {
 }
 
 .navbar {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Logo left, hamburger/cart right */
-    position: relative; /* Needed for absolute nav-links */
-    flex-wrap: nowrap;
+    gap: 16px;
+    flex-wrap: wrap; /* Mobile wrap */
 }
+
 
 /* Hamburger button */
 .hamburger {
@@ -75,7 +78,6 @@ header {
         margin: 8px 0;
     }
 }
-
 
 .logo {
     margin-right: auto;
@@ -425,3 +427,53 @@ footer {
     }
 }
 
+/* ------------------- MOBILE NAVBAR FIX ------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;           /* keep elements in a row */
+        justify-content: space-between; /* hamburger left, logo center, cart right */
+        align-items: center;
+        padding: 10px 16px;
+    }
+
+    .logo {
+        margin: 0 auto; /* center logo */
+    }
+
+    .hamburger {
+        display: block;  /* show hamburger on mobile */
+        order: 1;        /* put hamburger first (left) */
+    }
+
+    #cart-btn {
+        order: 3;        /* cart button last (right) */
+    }
+
+    .nav-links {
+        display: none;   /* hide nav links by default */
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+        background: var(--card);
+        position: absolute;
+        top: 60px;       /* below navbar */
+        left: 0;
+        border-top: 1px solid #eee;
+        padding: 10px 0;
+        z-index: 9;
+    }
+
+    .nav-links.active {
+        display: flex;   /* show links when hamburger clicked */
+    }
+
+    .nav-links li {
+        margin: 8px 0;
+    }
+
+    /* Optional: hide unnecessary text in mobile */
+    .navbar h1.logo {
+        display: none;   /* remove text logo, keep image */
+    }
+}
