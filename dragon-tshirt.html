@@ -121,94 +121,96 @@
         width: 100%;
       }
     }
+
     .product-specs {
-  margin: 20px 0;
-}
+      margin: 20px 0;
+    }
 
-.product-specs h3 {
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-  color: #222;
-}
+    .product-specs h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      color: #222;
+    }
 
-.specs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-}
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
 
-.spec-item {
-  background: #f9f9f9;
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+    .spec-item {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
 
-.spec-item h4 {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #444;
-}
+    .spec-item h4 {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #444;
+    }
 
-.spec-item p {
-  margin: 5px 0 0;
-  font-size: 0.9rem;
-  color: #666;
-}
-.product-detail {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
+    .spec-item p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
 
-.left-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center; /* Centers photo + highlights */
-}
+    .product-detail {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
 
-.product-specs {
-  width: 100%;
-  max-width: 350px; /* keeps it neat below photo */
-  text-align: center;
-}
+    .left-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      /* Centers photo + highlights */
+    }
 
-.product-specs h3 {
-  font-size: 1.3rem;
-  color: #222;
-  margin-bottom: 10px;
-}
+    .product-specs {
+      width: 100%;
+      max-width: 350px;
+      /* keeps it neat below photo */
+      text-align: center;
+    }
 
-.specs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+    .product-specs h3 {
+      font-size: 1.3rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
 
-.spec-item {
-  background: #f9f9f9;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
 
-.spec-item h4 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0;
-  color: #333;
-}
+    .spec-item {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
 
-.spec-item p {
-  font-size: 0.85rem;
-  color: #666;
-  margin: 3px 0 0;
-}
+    .spec-item h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0;
+      color: #333;
+    }
 
-
+    .spec-item p {
+      font-size: 0.85rem;
+      color: #666;
+      margin: 3px 0 0;
+    }
   </style>
 </head>
 
@@ -230,117 +232,118 @@
 
 
   <main class="product-detail">
-  <!-- Left: product image + highlights -->
-  <div class="left-column">
-    <!-- Product Image -->
-    <img id="product-img" src="Images/Furious-Dragon-page.jpg" alt="Dragon T-shirt">
+    <!-- Left: product image + highlights -->
+    <div class="left-column">
+      <!-- Product Image -->
+      <img id="product-img" src="Images/Furious-Dragon-page.jpg" alt="Dragon T-shirt">
 
-    <!-- ✅ Key Highlights directly below image -->
-    <section class="product-specs">
-      <h3>Why You’ll Love It</h3>
-      <div class="specs-grid">
-        <div class="spec-item">
-          <h4>Design</h4>
-          <p>Furious Dragon</p>
+      <!-- ✅ Key Highlights directly below image -->
+      <section class="product-specs">
+        <h3>Why You’ll Love It</h3>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <h4>Design</h4>
+            <p>Furious Dragon</p>
+          </div>
+          <div class="spec-item">
+            <h4>Material</h4>
+            <p>100% Cotton</p>
+          </div>
+          <div class="spec-item">
+            <h4>Occasion</h4>
+            <p>Casual / Streetwear</p>
+          </div>
+          <div class="spec-item">
+            <h4>Fit</h4>
+            <p>Regular</p>
+          </div>
+          <div class="spec-item">
+            <h4>Print</h4>
+            <p>High-Quality Graphic</p>
+          </div>
+          <div class="spec-item">
+            <h4>Sizes</h4>
+            <p>S, M, L, XL</p>
+          </div>
         </div>
-        <div class="spec-item">
-          <h4>Material</h4>
-          <p>100% Cotton</p>
-        </div>
-        <div class="spec-item">
-          <h4>Occasion</h4>
-          <p>Casual / Streetwear</p>
-        </div>
-        <div class="spec-item">
-          <h4>Fit</h4>
-          <p>Regular</p>
-        </div>
-        <div class="spec-item">
-          <h4>Print</h4>
-          <p>High-Quality Graphic</p>
-        </div>
-        <div class="spec-item">
-          <h4>Sizes</h4>
-          <p>S, M, L, XL</p>
-        </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
 
-  <!-- Right: product info -->
-  <div class="product-page">
-    <h2 id="product-title">Furious Dragon</h2>
-    <p id="product-price" class="price">₹349</p>
+    <!-- Right: product info -->
+    <div class="product-page">
+      <h2 id="product-title">Furious Dragon</h2>
+      <p id="product-price" class="price">₹349</p>
 
-    <!-- ✅ Size selector -->
-    <label for="size">Choose Size:</label>
-    <select id="size">
-      <option value="Small" data-price="349">Small - ₹349</option>
-      <option value="Medium" data-price="399">Medium - ₹399</option>
-      <option value="Large" data-price="449">Large - ₹449</option>
-    </select>
+      <!-- ✅ Size selector -->
+      <label for="size">Choose Size:</label>
+      <select id="size">
+        <option value="Small" data-price="349">Small - ₹349</option>
+        <option value="Medium" data-price="399">Medium - ₹399</option>
+        <option value="Large" data-price="449">Large - ₹449</option>
+      </select>
 
-    <!-- ✅ Color selector -->
-    <label for="color">Choose Color:</label>
-    <select id="color">
-      <option value="white" data-img="Images/Furious-Dragon-page.jpg" data-price="349"
-        data-title="Furious Dragon - White" data-desc="Classic white cotton T-shirt with elegant dragon design.">
-        White
-      </option>
-      <option value="Black" data-img="Images/Furious-Dragon-Black-page.jpg" data-price="499"
-        data-title="Furious Dragon - Black"
-        data-desc="Trendy skin-colored premium cotton T-shirt with bold dragon print.">
-        Black
-      </option>
-    </select>
+      <!-- ✅ Color selector -->
+      <label for="color">Choose Color:</label>
+      <select id="color">
+        <option value="white" data-img="Images/Furious-Dragon-page.jpg" data-price="349"
+          data-title="Furious Dragon - White" data-desc="Classic white cotton T-shirt with elegant dragon design.">
+          White
+        </option>
+        <option value="Black" data-img="Images/Furious-Dragon-Black-page.jpg" data-price="499"
+          data-title="Furious Dragon - Black"
+          data-desc="Trendy skin-colored premium cotton T-shirt with bold dragon print.">
+          Black
+        </option>
+      </select>
 
-    <!-- ✅ Description -->
-   
-        <div class="description" id="product-desc">
+      <!-- ✅ Description -->
+
+      <div class="description" id="product-desc">
         <p>
-          
+
           Turn heads with the Furious Dragon T-Shirt, designed for those who carry boldness and strength in their style.
           Featuring a striking dragon graphic with fine detailing, this tee combines streetwear edge with everyday
           comfort.
         </p>
-          
+
         <p>
 
-          Crafted from premium 100% cotton, it offers a soft, breathable, and lightweight fit—perfect for casual outings,
+          Crafted from premium 100% cotton, it offers a soft, breathable, and lightweight fit—perfect for casual
+          outings,
           college vibes, or making a powerful statement wherever you go.
-          
+
         </p>
         <p>
 
           ✅ Key Features:
-          
+
           Premium quality cotton fabric – soft & breathable <br>
-          
+
           Fierce dragon graphic with lasting print quality <br>
-          
+
           Regular fit for all-day comfort <br>
-          
+
           Durable stitching for long-term wear <br>
-          
+
           Available in multiple sizes (S, M, L,) <br>
-          
-        </p>
-       <p>
 
-         🔥 Why Choose It?
-         The Furious Dragon T-Shirt isn’t just apparel—it’s an attitude. Wear it to show your fearless personality and
-         stand out in the crowd.
         </p>
-      
-    </div>
+        <p>
 
-    <!-- Actions -->
-    <div class="actions">
-      <button id="add-to-cart">Add to Cart</button>
-      <button class="buy-now">Buy Now</button>
+          🔥 Why Choose It?
+          The Furious Dragon T-Shirt isn’t just apparel—it’s an attitude. Wear it to show your fearless personality and
+          stand out in the crowd.
+        </p>
+
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button id="add-to-cart">Add to Cart</button>
+        
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
 
   <!-- Cart Modal -->
@@ -424,7 +427,6 @@
       productImg.src = selected.getAttribute("data-img");
       productPrice.textContent = "₹" + selected.getAttribute("data-price");
       productTitle.textContent = selected.getAttribute("data-title");
-      productDesc.textContent = selected.getAttribute("data-desc");
     });
 
     // ✅ Add to cart with shared script.js cart
@@ -453,6 +455,7 @@
 
 
   <script src="script.js"></script>
+
 
 </body>
 

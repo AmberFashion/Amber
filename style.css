@@ -477,3 +477,12 @@ footer {
         display: none;   /* remove text logo, keep image */
     }
 }
+
+.products a {
+  color: inherit;       /* uses normal text color */
+  text-decoration: none; /* removes underline */
+}
+
+.products a:hover {
+  color: var(--brand);   /* optional: highlight on hover */
+}

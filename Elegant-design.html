@@ -233,7 +233,7 @@
   <!-- Left: product image + highlights -->
   <div class="left-column">
     <!-- Product Image -->
-    <img id="product-img" src="Images/Elegant-design-page.jpg" alt="Dragon T-shirt">
+    <img id="product-img" src="Images/Elegant-design-page.jpg" alt="Elegant design">
 
     <!-- ✅ Key Highlights directly below image -->
     <section class="product-specs">
@@ -241,7 +241,7 @@
       <div class="specs-grid">
         <div class="spec-item">
           <h4>Design</h4>
-          <p>Furious Dragon</p>
+          <p>Elegant design</p>
         </div>
         <div class="spec-item">
           <h4>Material</h4>
@@ -261,7 +261,7 @@
         </div>
         <div class="spec-item">
           <h4>Sizes</h4>
-          <p>S, M, L, XL</p>
+          <p>S, M, L</p>
         </div>
       </div>
     </section>
@@ -269,7 +269,7 @@
 
   <!-- Right: product info -->
   <div class="product-page">
-    <h2 id="product-title">Furious Dragon</h2>
+    <h2 id="product-title">Elegant design</h2>
     <p id="product-price" class="price">₹349</p>
 
     <!-- ✅ Size selector -->
@@ -283,14 +283,14 @@
     <!-- ✅ Color selector -->
     <label for="color">Choose Color:</label>
     <select id="color">
-      <option value="white" data-img="Images/Elegant-design-page.jpg" data-price="349"
-        data-title="Furious Dragon - White" data-desc="Classic white cotton T-shirt with elegant dragon design.">
-        White
+      <option value="Black" data-img="Images/Elegant-design-page.jpg" data-price="349"
+        data-title="Furious Dragon - White" data-desc="">
+        Black
       </option>
       <option value="Black" data-img="Images/Elegant-design-skin-page.jpg" data-price="499"
         data-title="Furious Dragon - Black"
-        data-desc="Trendy skin-colored premium cotton T-shirt with bold dragon print.">
-        Black
+        data-desc="">
+        Skin
       </option>
     </select>
 
@@ -298,46 +298,29 @@
    
         <div class="description" id="product-desc">
         <p>
-          
-          Turn heads with the Furious Dragon T-Shirt, designed for those who carry boldness and strength in their style.
-          Featuring a striking dragon graphic with fine detailing, this tee combines streetwear edge with everyday
-          comfort.
-        </p>
-          
-        <p>
+    The <strong>Elegant Design T-Shirt</strong> combines minimalist aesthetics with modern tailoring to give you
+    a refined everyday staple. Made from <strong>premium combed cotton</strong>, this tee offers a soft hand-feel,
+    excellent drape, and long-lasting color retention. The subtle pattern and clean silhouette make it perfect for
+    both casual outings and semi-formal streetwear looks.
+  </p>
 
-          Crafted from premium 100% cotton, it offers a soft, breathable, and lightweight fit—perfect for casual outings,
-          college vibes, or making a powerful statement wherever you go.
-          
-        </p>
-        <p>
+  <ul>
+    <li><strong>Material:</strong> Premium combed cotton (soft & breathable)</li>
+    <li><strong>Fit:</strong> Regular — comfortable and true to size</li>
+    <li><strong>Design:</strong> Clean geometric pattern with minimal detailing</li>
+    <li><strong>Care:</strong> Machine washable, fade-resistant print</li>
+    <li><strong>Perfect for:</strong> Day-to-day wear, smart-casual looks, and layering</li>
+  </ul>
 
-          ✅ Key Features:
-          
-          Premium quality cotton fabric – soft & breathable <br>
-          
-          Fierce dragon graphic with lasting print quality <br>
-          
-          Regular fit for all-day comfort <br>
-          
-          Durable stitching for long-term wear <br>
-          
-          Available in multiple sizes (S, M, L,) <br>
-          
-        </p>
-       <p>
-
-         🔥 Why Choose It?
-         The Furious Dragon T-Shirt isn’t just apparel—it’s an attitude. Wear it to show your fearless personality and
-         stand out in the crowd.
-        </p>
+  <p>
+    Elevate your wardrobe with the Elegant Design T-Shirt — <em>where subtlety meets sophistication</em>.
+  </p>
       
     </div>
 
     <!-- Actions -->
     <div class="actions">
       <button id="add-to-cart">Add to Cart</button>
-      <button class="buy-now">Buy Now</button>
     </div>
   </div>
 </main>
@@ -424,7 +407,7 @@
       productImg.src = selected.getAttribute("data-img");
       productPrice.textContent = "₹" + selected.getAttribute("data-price");
       productTitle.textContent = selected.getAttribute("data-title");
-      productDesc.textContent = selected.getAttribute("data-desc");
+     
     });
 
     // ✅ Add to cart with shared script.js cart
