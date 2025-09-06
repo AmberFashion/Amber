@@ -171,3 +171,48 @@ const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
+
+document.getElementById("checkout-btn").addEventListener("click", async () => {
+  // 🛒 Get total from cart
+  const total = parseInt(document.getElementById("cart-total").innerText);
+
+  // Step 1: Create order from backend
+  const response = await fetch("http://localhost:5000/create-order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount: total })
+  });
+
+  const order = await response.json();
+
+  // Step 2: Open Razorpay checkout
+  const options = {
+    key: "rzp_test_RDy2KX1PBrQ5aV", // same as backend
+    amount: order.amount,
+    currency: order.currency,
+    name: "Amber Fashion",
+    description: "T-Shirt Purchase",
+    order_id: order.id,
+    handler: async function (response) {
+      // Step 3: Verify payment
+      const verifyRes = await fetch("http://localhost:5000/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(response)
+      });
+
+      const verifyData = await verifyRes.json();
+      if (verifyData.success) {
+        alert("✅ Payment Successful! Order confirmed.");
+        window.location.href = "thankyou.html";
+      } else {
+        alert("❌ Payment verification failed!");
+      }
+    },
+    theme: { color: "#ff4e50" }
+  };
+
+  const rzp1 = new Razorpay(options);
+  rzp1.open();
+});
+

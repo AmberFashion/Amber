@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floral Rose Print Hawaiian Shirt - AMBER</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-detail {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .product-detail img {
+
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-detail img:hover {
+            transform: scale(1.03);
+        }
+
+        .product-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-page h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        select {
+            padding: 8px 12px;
+            margin-top: 5px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #add-to-cart,
+        .buy-now {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #add-to-cart {
+            background: #ff9800;
+            color: white;
+            margin-right: 15px;
+        }
+
+        #add-to-cart:hover {
+            background: #e68900;
+        }
+
+        .buy-now {
+            background: #4caf50;
+            color: white;
+        }
+
+        .buy-now:hover {
+            background: #3d8b40;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            #add-to-cart,
+            .buy-now {
+                width: 100%;
+            }
+        }
+
+        .product-specs {
+            margin: 20px 0;
+        }
+
+        .product-specs h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #222;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .spec-item {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .spec-item h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .spec-item p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .left-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            /* Centers photo + highlights */
+        }
+
+        .product-specs {
+            width: 100%;
+            max-width: 350px;
+            /* keeps it neat below photo */
+            text-align: center;
+        }
+
+        .product-specs h3 {
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .spec-item {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .spec-item h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0;
+            color: #333;
+        }
+
+        .spec-item p {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 3px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">AMBER</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">T-Shirts</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button id="cart-btn" class="pill" aria-label="Shopping Cart">
+                🛒 Cart (<span id="cart-count">0</span>)
+            </button>
+        </nav>
+    </header>
+
+
+    <main class="product-detail">
+        <!-- Left: product image + highlights -->
+        <div class="left-column">
+            <!-- Product Image -->
+            <img id="product-img" src="Images/Furious-Dragon-page.jpg" alt="Dragon T-shirt">
+
+            <!-- ✅ Key Highlights directly below image -->
+            <section class="product-specs">
+                <h3>Why You’ll Love It</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <h4>Design</h4>
+                        <p>Furious Dragon</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Material</h4>
+                        <p>100% Cotton</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Occasion</h4>
+                        <p>Casual / Streetwear</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Fit</h4>
+                        <p>Regular</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Print</h4>
+                        <p>High-Quality Graphic</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Sizes</h4>
+                        <p>S, M, L, XL</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right: product info -->
+        <div class="product-page">
+            <h2 id="product-title">Floral Rose Print Hawaiian Shirt</h2>
+            <p id="product-price" class="price">₹10</p>
+
+            <!-- ✅ Size selector -->
+            <label for="size">Choose Size:</label>
+            <select id="size">
+                <option value="Medium " data-price="500">Medium  - ₹500</option>
+                <option value="Large" data-price="399">Large - ₹399</option>
+                <option value="Extra Large" data-price="449">Extra Large - ₹449</option>
+            </select>
+
+            <!-- ✅ Color selector -->
+            <label for="color">Choose Color:</label>
+            <select id="color">
+                <option value="white" data-img="Images/Furious-Dragon-page.jpg" data-price="10"
+                    data-title="Furious Dragon - White" data-desc="Casual Summer Shirt">
+                    White
+                </option>
+                <option value="Black" data-img="Images/Furious-Dragon-Black-page.jpg" data-price="499"
+                    data-title="Furious Dragon - Black"
+                    data-desc="Trendy skin-colored premium cotton T-shirt with bold dragon print.">
+                    Black
+                </option>
+            </select>
+
+            <!-- ✅ Description -->
+
+            <div class="description" id="product-desc">
+                <p>
+                    Step up your style game with this trendy
+                    <strong>Floral Rose Print Hawaiian Shirt</strong>. Perfect for summer outings,
+                    beach parties, or casual hangouts, this lightweight short-sleeve shirt
+                    combines comfort and fashion effortlessly. Made from breathable fabric,
+                    it keeps you cool even on the hottest days while showcasing a bold
+                    all-over rose print pattern that adds a touch of vibrance and personality
+                    to your outfit. The relaxed fit and button-down design make it easy to
+                    pair with shorts, jeans, or chinos for a laid-back yet stylish look.
+                </p>
+
+                <p>
+
+                    ✅ Key Features:
+
+                    Premium quality cotton fabric – soft & breathable <br>
+
+                    Fierce dragon graphic with lasting print quality <br>
+
+                    Regular fit for all-day comfort <br>
+
+                    Durable stitching for long-term wear <br>
+
+                    Available in multiple sizes ( M, L, XL) <br>
+
+                </p>
+                <p>
+
+                    🔥 Why Choose It?
+                    The Furious Dragon T-Shirt isn’t just apparel—it’s an attitude. Wear it to show your fearless
+                    personality and
+                    stand out in the crowd.
+                </p>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button id="add-to-cart">Add to Cart</button>
+
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-cart" class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: ₹<span id="cart-total">0</span></p>
+            <button id="clear-cart">Clear Cart</button>
+            <button id="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-checkout" class="close">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form" action="https://formsubmit.co/amber.business2025@gmail.com" method="POST">
+                <!-- FormSubmit settings -->
+                <input type="hidden" name="_subject" value="🛒 New Order - AMBER">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://amberfashion.github.io/Amber/thankyou.html">
+
+                <!-- Customer Info -->
+                <label>Full Name:</label>
+                <input type="text" name="Full Name" required>
+
+                <label>Email Address:</label>
+                <input type="email" name="Customer Email" required>
+
+                <label>Birthday:</label>
+                <input type="date" name="Birthday" required>
+
+                <label>Billing Address:</label>
+                <input type="text" name="Billing Address" required>
+
+                <!-- Order Preview -->
+                <label>Order Summary:</label>
+                <textarea id="order-preview" readonly></textarea>
+
+                <!-- Hidden inputs -->
+                <input type="hidden" id="order-input" name="Order Details">
+                <input type="hidden" id="total-input" name="Total Amount">
+
+                <!-- Payment -->
+                <label for="payment-mode">Payment Mode:</label>
+                <select id="payment-mode" name="Payment Mode" required>
+                    <option value="UPI">UPI</option>
+                    <option value="Credit/Debit Card">Credit/Debit Card</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                </select>
+
+                <button type="submit">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        const sizeSelect = document.getElementById("size");
+        const colorSelect = document.getElementById("color");
+        const productPrice = document.getElementById("product-price");
+        const productTitle = document.getElementById("product-title");
+        const productDesc = document.getElementById("product-desc");
+        const productImg = document.getElementById("product-img");
+        const addToCartBtn = document.getElementById("add-to-cart");
+
+        // ✅ Update price when size changes
+        sizeSelect.addEventListener("change", function () {
+            const selectedSize = sizeSelect.options[sizeSelect.selectedIndex];
+            const basePrice = parseInt(selectedSize.getAttribute("data-price"));
+            productPrice.textContent = "₹" + basePrice;
+        });
+
+        // ✅ Update details when color changes
+        colorSelect.addEventListener("change", function () {
+            const selected = colorSelect.options[colorSelect.selectedIndex];
+            productImg.src = selected.getAttribute("data-img");
+            productPrice.textContent = "₹" + selected.getAttribute("data-price");
+            productTitle.textContent = selected.getAttribute("data-title");
+        });
+
+        // ✅ Add to cart with shared script.js cart
+        addToCartBtn.addEventListener("click", function () {
+            const sizeSelected = sizeSelect.options[sizeSelect.selectedIndex];
+            const colorSelected = colorSelect.options[colorSelect.selectedIndex];
+
+            const product = {
+                name: `${productTitle.textContent} (${sizeSelected.value}, ${colorSelected.value})`,
+                price: parseInt(productPrice.textContent.replace("₹", "")),
+                image: productImg.src,
+                quantity: 1
+            };
+
+            const existing = cart.find((item) => item.name === product.name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+
+            updateCart(); // 🔑 refreshes cart count + modal + saves to localStorage
+        });
+
+    </script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

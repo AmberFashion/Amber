@@ -272,12 +272,12 @@
     <!-- Right: product info -->
     <div class="product-page">
       <h2 id="product-title">Furious Dragon</h2>
-      <p id="product-price" class="price">₹349</p>
+      <p id="product-price" class="price">₹10</p>
 
       <!-- ✅ Size selector -->
       <label for="size">Choose Size:</label>
       <select id="size">
-        <option value="Small" data-price="349">Small - ₹349</option>
+        <option value="Small" data-price="500">Small - ₹500</option>
         <option value="Medium" data-price="399">Medium - ₹399</option>
         <option value="Large" data-price="449">Large - ₹449</option>
       </select>
@@ -285,7 +285,7 @@
       <!-- ✅ Color selector -->
       <label for="color">Choose Color:</label>
       <select id="color">
-        <option value="white" data-img="Images/Furious-Dragon-page.jpg" data-price="349"
+        <option value="white" data-img="Images/Furious-Dragon-page.jpg" data-price="10"
           data-title="Furious Dragon - White" data-desc="Classic white cotton T-shirt with elegant dragon design.">
           White
         </option>
@@ -450,9 +450,10 @@
 
       updateCart(); // 🔑 refreshes cart count + modal + saves to localStorage
     });
+    
   </script>
 
-
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <script src="script.js"></script>
 

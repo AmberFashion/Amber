@@ -98,7 +98,7 @@
             <img src="Images/Furious-Dragon.jpg" alt="Dragon Graphic T-Shirt">
             <h3>Dragon T-Shirt</h3>
             <p class="short-desc">Fiery dragon design, bold streetwear.</p>
-            <p class="price"><strong>₹499</strong></p>
+            <p class="price"><strong>₹10</strong></p>
           </a>
           <button class="add-to-cart">Add to Cart</button>
         </article>
@@ -122,6 +122,17 @@
           </a>
           <button class="add-to-cart">Add to Cart</button>
         </article>
+
+        <article class="product-card" data-name="Floral Rose Print Hawaiian Shirt" data-price="349">
+          <a href="Floral-rose-shirt.html">
+            <img src="Images/Elegant-design.jpg" alt="Floral Rose Print Hawaiian Shirt">
+            <h3>Floral Rose Print Hawaiian Shirt</h3>
+            <p class="short-desc">Casual Summer Shirt.</p>
+            <p class="price"><strong>₹349</strong></p>
+          </a>
+          <button class="add-to-cart">Add to Cart</button>
+        </article>
+        
 
       </div>
     </section>
@@ -238,11 +249,14 @@
           <option value="Cash on Delivery">Cash on Delivery</option>
         </select>
 
-        <button type="submit">Confirm Order</button>
+        <button type="button" id="payBtn">Pay Securely</button>
+
       </form>
 
     </div>
   </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 
   <script src="script.js"></script>
