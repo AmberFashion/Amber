@@ -179,14 +179,9 @@ const searchContainer = document.querySelector('.search-container');
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
-
-  // Hide search bar when nav is active on mobile
-  if (navLinks.classList.contains('active')) {
-    searchContainer.style.display = 'none';
-  } else {
-    searchContainer.style.display = 'flex';
-  }
+  searchContainer.classList.toggle('search-hidden', navLinks.classList.contains('active'));
 });
+
 
 
 document.getElementById("checkout-btn").addEventListener("click", async () => {
