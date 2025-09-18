@@ -18,6 +18,13 @@ const orderPreview = document.getElementById("order-preview");
 const orderInput = document.getElementById("order-input");
 const totalInput = document.getElementById("total-input");
 
+// ------- Search Elements -------
+const searchBar = document.getElementById("search-bar");
+const searchBtn = document.getElementById("search-btn");
+const resultsList = document.getElementById("search-results");
+const products = document.querySelectorAll(".product-card");
+
+
 // ------- Helpers -------
 function formatINR(n) {
   return Number(n).toLocaleString("en-IN");
@@ -112,7 +119,7 @@ checkoutForm.addEventListener("submit", () => {
   cart = [];
   updateCart();
   checkoutModal.style.display = "none";
-  
+
 });
 
 // ------- Initial render -------
@@ -215,4 +222,62 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
   const rzp1 = new Razorpay(options);
   rzp1.open();
 });
+
+// Prepare product data for Fuse.js
+const productList = Array.from(products).map(product => ({
+  element: product,
+  name: product.querySelector("h3").innerText,
+  desc: product.querySelector(".short-desc").innerText
+}));
+
+// Initialize Fuse.js
+const fuse = new Fuse(productList, {
+  keys: ["name", "desc"],
+  threshold: 0.4, // fuzzy matching level
+});
+
+// New fuzzy search function
+function searchProducts() {
+  const query = searchBar.value.trim();
+  resultsList.innerHTML = "";
+
+  if (query === "") {
+    // Show all products if search is empty
+    products.forEach(p => (p.style.display = "block"));
+    resultsList.style.display = "none";
+    return;
+  }
+
+  const results = fuse.search(query);
+
+  // Hide all products first
+  products.forEach(p => (p.style.display = "none"));
+
+  if (results.length === 0) {
+    const li = document.createElement("li");
+    li.textContent = "No results found";
+    li.style.color = "red";
+    resultsList.appendChild(li);
+    resultsList.style.display = "block";
+    return;
+  }
+
+  results.forEach(res => {
+    res.item.element.style.display = "block";
+
+    const li = document.createElement("li");
+    li.textContent = res.item.name;
+    li.addEventListener("click", () => {
+      res.item.element.scrollIntoView({ behavior: "smooth", block: "center" });
+      resultsList.style.display = "none";
+    });
+    resultsList.appendChild(li);
+  });
+
+  resultsList.style.display = "block";
+}
+
+// Hook up events
+searchBtn.addEventListener("click", searchProducts);
+searchBar.addEventListener("keyup", searchProducts);
 

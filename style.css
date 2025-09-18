@@ -31,7 +31,7 @@ header {
 .navbar {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 12px 16px;
+    padding: 6px 12px;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -486,3 +486,68 @@ footer {
 .products a:hover {
   color: var(--brand);   /* optional: highlight on hover */
 }
+
+
+/* Search Bar */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  max-width: 400px;
+}
+
+#search-bar {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+
+#search-btn {
+  padding: 8px 12px;
+  border: none;
+  background: #111;
+  color: #fff;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#search-btn:hover {
+  background: #ff6600;
+}
+
+.results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  display: none; /* hidden until results */
+}
+
+.results-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.results-list li:hover {
+  background: #f2f2f2;
+}
+
+.search-container {
+  position: sticky;
+  height: 20px;
+  top: 0;
+  z-index: 1000;
+  background: #fff; /* match your site background */
+  padding: 10px;
+}
+
