@@ -174,10 +174,20 @@ function resetInterval() {
 // ------- HAMBURGER TOGGLE -------
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
+const searchContainer = document.querySelector('.search-container');
+
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
+
+  // Hide search bar when nav is active on mobile
+  if (navLinks.classList.contains('active')) {
+    searchContainer.style.display = 'none';
+  } else {
+    searchContainer.style.display = 'flex';
+  }
 });
+
 
 document.getElementById("checkout-btn").addEventListener("click", async () => {
   // 🛒 Get total from cart

@@ -551,3 +551,9 @@ footer {
   padding: 10px;
 }
 
+/* Hide search bar when mobile menu is open */
+.search-hidden {
+  display: none !important;
+}
+
+
