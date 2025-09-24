@@ -124,52 +124,50 @@ checkoutForm.addEventListener("submit", () => {
 
 // ------- Initial render -------
 updateCart();
-// ------- SLIDER -------
 const slides = document.querySelector('.slides');
 const slideItems = document.querySelectorAll('.slide');
 const dotsContainer = document.querySelector('.dots');
 
 let currentIndex = 0;
-const realSlides = slideItems.length;
+const totalSlides = slideItems.length;
 let dots = [];
 
 // Create dots
-for (let i = 0; i < realSlides; i++) {
-  const dot = document.createElement('div');
-  dot.classList.add('dot');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-  dots.push(dot);
+for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
 }
 
 function updateDots() {
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentIndex);
-  });
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
 function showSlide(index) {
-  currentIndex = (index + realSlides) % realSlides;
-  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-  updateDots();
+    currentIndex = (index + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
 }
 
 function goToSlide(index) {
-  showSlide(index);
-  resetInterval();
+    showSlide(index);
+    resetInterval();
 }
 
 function nextSlide() {
-  showSlide(currentIndex + 1);
+    showSlide(currentIndex + 1);
 }
 
-let slideInterval = setInterval(nextSlide, 3000);
+let slideInterval = setInterval(nextSlide, 4000); // 4 seconds per slide
 
 function resetInterval() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 3000);
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 4000);
 }
+
 
 // ------- HAMBURGER TOGGLE -------
 const hamburger = document.getElementById('hamburger');
