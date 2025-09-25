@@ -24,6 +24,12 @@ const searchBtn = document.getElementById("search-btn");
 const resultsList = document.getElementById("search-results");
 const products = document.querySelectorAll(".product-card");
 
+// ------- Filters & Sorting Elements -------
+const sizeFilters = document.querySelectorAll('input[name="size"]');
+const colorFilters = document.querySelectorAll('input[name="color"]');
+const priceFilters = document.querySelectorAll('input[name="price"]');
+const sortSelect = document.getElementById('sort-products');
+const clearFiltersBtn = document.getElementById('clear-filters');
 
 // ------- Helpers -------
 function formatINR(n) {
@@ -114,16 +120,16 @@ checkoutBtn.addEventListener("click", () => {
   checkoutModal.style.display = "flex";
 });
 
-// ------- On Form Submit -------
 checkoutForm.addEventListener("submit", () => {
   cart = [];
   updateCart();
   checkoutModal.style.display = "none";
-
 });
 
 // ------- Initial render -------
 updateCart();
+
+// ------- Slider -------
 const slides = document.querySelector('.slides');
 const slideItems = document.querySelectorAll('.slide');
 const dotsContainer = document.querySelector('.dots');
@@ -134,83 +140,72 @@ let dots = [];
 
 // Create dots
 for (let i = 0; i < totalSlides; i++) {
-    const dot = document.createElement('div');
-    dot.classList.add('dot');
-    if(i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-    dots.push(dot);
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if(i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+  dots.push(dot);
 }
 
 function updateDots() {
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
 function showSlide(index) {
-    currentIndex = (index + totalSlides) % totalSlides;
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateDots();
+  currentIndex = (index + totalSlides) % totalSlides;
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  updateDots();
 }
 
 function goToSlide(index) {
-    showSlide(index);
-    resetInterval();
+  showSlide(index);
+  resetInterval();
 }
 
 function nextSlide() {
-    showSlide(currentIndex + 1);
+  showSlide(currentIndex + 1);
 }
 
 let slideInterval = setInterval(nextSlide, 4000); // 4 seconds per slide
-
 function resetInterval() {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 4000);
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 4000);
 }
 
-
-// ------- HAMBURGER TOGGLE -------
+// ------- Hamburger toggle -------
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
 const searchContainer = document.querySelector('.search-container');
-
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
   searchContainer.classList.toggle('search-hidden', navLinks.classList.contains('active'));
 });
 
-
-
+// ------- Razorpay Checkout -------
 document.getElementById("checkout-btn").addEventListener("click", async () => {
-  // 🛒 Get total from cart
   const total = parseInt(document.getElementById("cart-total").innerText);
-
-  // Step 1: Create order from backend
   const response = await fetch("http://localhost:5000/create-order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ amount: total })
   });
-
   const order = await response.json();
 
-  // Step 2: Open Razorpay checkout
   const options = {
-    key: "rzp_test_RDy2KX1PBrQ5aV", // same as backend
+    key: "rzp_test_RDy2KX1PBrQ5aV",
     amount: order.amount,
     currency: order.currency,
     name: "Amber Fashion",
     description: "T-Shirt Purchase",
     order_id: order.id,
     handler: async function (response) {
-      // Step 3: Verify payment
       const verifyRes = await fetch("http://localhost:5000/verify-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(response)
       });
-
       const verifyData = await verifyRes.json();
       if (verifyData.success) {
         alert("✅ Payment Successful! Order confirmed.");
@@ -226,35 +221,30 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
   rzp1.open();
 });
 
-// Prepare product data for Fuse.js
+// ------- Fuse.js Search -------
 const productList = Array.from(products).map(product => ({
   element: product,
   name: product.querySelector("h3").innerText,
   desc: product.querySelector(".short-desc").innerText
 }));
 
-// Initialize Fuse.js
 const fuse = new Fuse(productList, {
   keys: ["name", "desc"],
-  threshold: 0.4, // fuzzy matching level
+  threshold: 0.4,
 });
 
-// New fuzzy search function
 function searchProducts() {
   const query = searchBar.value.trim();
   resultsList.innerHTML = "";
 
   if (query === "") {
-    // Show all products if search is empty
-    products.forEach(p => (p.style.display = "block"));
+    products.forEach(p => p.style.display = "block");
     resultsList.style.display = "none";
     return;
   }
 
   const results = fuse.search(query);
-
-  // Hide all products first
-  products.forEach(p => (p.style.display = "none"));
+  products.forEach(p => p.style.display = "none");
 
   if (results.length === 0) {
     const li = document.createElement("li");
@@ -280,7 +270,54 @@ function searchProducts() {
   resultsList.style.display = "block";
 }
 
-// Hook up events
 searchBtn.addEventListener("click", searchProducts);
 searchBar.addEventListener("keyup", searchProducts);
 
+// Dropdown elements
+const sizeFilter = document.getElementById('size-filter');
+const colorFilter = document.getElementById('color-filter');
+const priceFilter = document.getElementById('price-filter');
+
+// Filter function
+function filterProducts() {
+  const selectedSize = sizeFilter.value;
+  const selectedColor = colorFilter.value;
+  const selectedPrice = priceFilter.value;
+
+  let visibleCount = 0;
+
+  products.forEach(product => {
+    const size = product.dataset.size;
+    const color = product.dataset.color;
+    const price = Number(product.dataset.price);
+
+    let sizeMatch = selectedSize ? size === selectedSize : true;
+    let colorMatch = selectedColor ? color === selectedColor : true;
+    let priceMatch = true;
+
+    if (selectedPrice) {
+      const [min, max] = selectedPrice.split('-').map(Number);
+      priceMatch = price >= min && price <= (max || Infinity);
+    }
+
+    const show = sizeMatch && colorMatch && priceMatch;
+    product.style.display = show ? "block" : "none";
+    if(show) visibleCount++;
+  });
+
+  document.getElementById('product-count')?.remove();
+  const productCount = document.createElement('p');
+  productCount.id = 'product-count';
+  productCount.textContent = `${visibleCount} products found`;
+  document.querySelector('.products').prepend(productCount);
+
+  sortProducts();
+}
+
+// Event listeners
+[sizeFilter, colorFilter, priceFilter, sortSelect].forEach(el =>
+  el.addEventListener('change', filterProducts)
+);
+
+// Initial filter
+document.addEventListener("DOMContentLoaded", filterProducts);

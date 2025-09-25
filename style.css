@@ -550,3 +550,37 @@ footer {
 .search-hidden {
     display: none !important;
 }
+
+
+/* Filters Toolbar above products */
+.filters-dropdown {
+  display: flex;
+  flex-wrap: wrap;      /* wrap on small screens */
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 24px;  /* space below toolbar */
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow-x: auto;      /* scroll horizontally if needed */
+  position: relative;    /* relative, not sticky, so it stays above products */
+  z-index: 10;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.filter-item select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--muted);
+  min-width: 120px;
+  cursor: pointer;
+}
