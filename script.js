@@ -183,7 +183,43 @@ hamburger.addEventListener('click', () => {
   searchContainer.classList.toggle('search-hidden', navLinks.classList.contains('active'));
 });
 
+// ------- Razorpay Checkout -------
+document.getElementById("checkout-btn").addEventListener("click", async () => {
+  const total = parseInt(document.getElementById("cart-total").innerText);
+  const response = await fetch("http://localhost:5000/create-order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount: total })
+  });
+  const order = await response.json();
 
+  const options = {
+    key: "rzp_test_RDy2KX1PBrQ5aV",
+    amount: order.amount,
+    currency: order.currency,
+    name: "Amber Fashion",
+    description: "T-Shirt Purchase",
+    order_id: order.id,
+    handler: async function (response) {
+      const verifyRes = await fetch("http://localhost:5000/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(response)
+      });
+      const verifyData = await verifyRes.json();
+      if (verifyData.success) {
+        alert("✅ Payment Successful! Order confirmed.");
+        window.location.href = "thankyou.html";
+      } else {
+        alert("❌ Payment verification failed!");
+      }
+    },
+    theme: { color: "#ff4e50" }
+  };
+
+  const rzp1 = new Razorpay(options);
+  rzp1.open();
+});
 
 // ------- Fuse.js Search -------
 const productList = Array.from(products).map(product => ({
